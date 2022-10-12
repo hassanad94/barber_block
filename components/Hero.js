@@ -1,5 +1,4 @@
-// import data
-import { heroData } from "../data";
+import { IoMdArrowForward } from "react-icons/io";
 // import motion
 import { motion } from "framer-motion";
 // import variants
@@ -15,16 +14,17 @@ const container = {
   },
 };
 
-const Hero = () => {
+const Hero = (...props) => {
   // destructure hero data
-  const { title, subtitle, btnText, btnIcon } = heroData;
+
+  const { title, subtitle, btnText } = props[0].titles[0];
   return (
-    <section className="bg-hero bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[120px] lg:mt-[150px]">
+    <section className="bg-hero before:bg-[#00000085] before:h-[100%] before:w-[100%] before:absolute bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[120px] lg:mt-[150px]">
       <motion.div
         variants={container}
         initial="hidden"
         whileInView={"show"}
-        className="container mx-auto min-h-[40vh] lg:h-full flex items-center justify-center xl:justify-end"
+        className="container p-[10px] mx-auto min-h-[40vh] lg:h-full flex items-center justify-center xl:justify-end"
       >
         {/* text & btn */}
         <div className="text-white text-center lg:text-left lg:max-w-[640px]">
@@ -33,15 +33,17 @@ const Hero = () => {
           </motion.h1>
           <motion.p
             variants={fadeIn("down")}
-            className="mb-8 lg:mb-16 max-w-lg leading-relaxed"
+            className="m-[0px_auto_8px_auto] lg:m-[0px_0_16px_0] lg:mb-16 max-w-lg leading-relaxed"
           >
             {subtitle}
           </motion.p>
           {/* btn */}
           <motion.div variants={fadeIn("down")}>
-            <button className="btn btn-sm lg:btn-lg btn-outline mx-auto lg:mx-0">
+            <button className="z-10 btn btn-sm lg:btn-lg btn-outline mx-auto lg:mx-0">
               {btnText}
-              <div className="text-xl">{btnIcon}</div>
+              <div className="text-xl">
+                <IoMdArrowForward />
+              </div>
             </button>
           </motion.div>
         </div>

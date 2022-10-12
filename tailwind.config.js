@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./public/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     fontFamily: {
       primary: "Oswald",
@@ -27,12 +30,12 @@ module.exports = {
         },
       },
       backgroundImage: {
-        hero: "url('/public/img/hero/bg.jpg')",
-        about: "url('/public/img/about/image.png')",
-        interview: "url('/public/img/interview/bg.png')",
+        hero: "url('/img/hero/bg.jpg')",
+        about: "url('/img/about/image.png')",
+        interview: "url('/img/interview/bg.png')",
       },
       content: {
-        outlineText: 'url("/public/img/hero/outline-text.svg")',
+        outlineText: 'url("/img/hero/heroText.svg")',
       },
     },
   },

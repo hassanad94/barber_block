@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
-// import header data
-// import components
+import { urlForImage } from "../lib/client";
+import Image from "next/image";
 import Nav from "./Nav";
 import NavMobile from "./NavMobile";
 import Socials from "./Socials";
-// import icons
-import { TiThMenuOutline } from "react-icons/ti";
 
 const Header = (...props) => {
   // destructure header data
-  const { logo } = props[0];
+  const { logo, socials } = props[0];
+
+  const logoUrl = urlForImage(logo).url();
   const [isActive, setIsActive] = useState(false);
   const [navMobile, setNavMobile] = useState(false);
-  // scroll event
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 50 ? setIsActive(true) : setIsActive(false);
@@ -27,7 +27,7 @@ const Header = (...props) => {
       <div className="flex justify-between items-center h-full pl-[50px] pr-[60px]">
         {/* logo */}
         <a href="/">
-          <img className="w-[188px] h-[90px]" src={logo} alt="" />
+          <Image width={75} height={75} src={logoUrl} alt="" />
         </a>
         {/* nav - initially is hidden - show on desktop*/}
         <div className="hidden xl:flex">
@@ -38,7 +38,15 @@ const Header = (...props) => {
           onClick={() => setNavMobile(!navMobile)}
           className="xl:hidden absolute right-[5%] bg-dark p-2 rounded-md cursor-pointer"
         >
-          <TiThMenuOutline className="text-3xl text-white" />
+          <div
+            className={`${
+              navMobile ? "is-active " : ""
+            }hamburger hamburger--collapse js-hamburger`}
+          >
+            <div className="hamburger-box">
+              <div className="hamburger-inner"></div>
+            </div>
+          </div>
         </div>
         {/* nav mobile - is showing by default - hidden on desktop mode */}
         <div
@@ -46,7 +54,7 @@ const Header = (...props) => {
             isActive
               ? "top-[100px] lg:top-[110px]"
               : "top-[120px] lg:top-[150px]"
-          } fixed left-0 -z-10 w-full h-full bg-white transition-all duration-300`}
+          } cursor fixed left-0 -z-10 w-full h-full bg-white transition-all duration-300`}
         >
           <NavMobile />
         </div>
