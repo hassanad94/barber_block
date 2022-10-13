@@ -3,6 +3,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import { motion } from "framer-motion";
 // import variants
 import { fadeIn } from "../variants";
+import Image from "next/image";
 
 const container = {
   hidden: {},
@@ -18,8 +19,17 @@ const Hero = (...props) => {
   // destructure hero data
 
   const { title, subtitle, btnText } = props[0].titles[0];
+
   return (
-    <section className="bg-hero before:bg-[#00000085] before:h-[100%] before:w-[100%] before:absolute bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[120px] lg:mt-[150px]">
+    <section className="before:bg-[#00000085] before:h-[100%] before:w-[100%] before:absolute bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[120px] lg:mt-[150px]">
+      <Image
+        src="/img/hero/bg.jpg"
+        layout="fill"
+        alt="hero"
+        objectFit="cover"
+        quality={100}
+        priority
+      />
       <motion.div
         variants={container}
         initial="hidden"

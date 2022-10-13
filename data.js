@@ -11,6 +11,7 @@ export const navData = {
     { href: "/", name: "Contact" },
   ],
 };
+export const logo = "/img/logo/logo.jpg";
 
 export const socialData = [
   {

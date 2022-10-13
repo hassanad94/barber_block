@@ -1,5 +1,6 @@
 // import nav data
 import { navData } from "../data";
+import Link from "next/link";
 
 const Nav = () => {
   // destructure nav data
@@ -10,12 +11,12 @@ const Nav = () => {
         {items.map((item, index) => {
           return (
             <li key={index}>
-              <a
+              <Link
                 className="link hover:border-b-2 hover:border-dark transition duration-300"
                 href={item.href}
               >
                 {item.name}
-              </a>
+              </Link>
             </li>
           );
         })}

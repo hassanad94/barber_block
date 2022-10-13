@@ -1,13 +1,11 @@
 import "../styles/globals.css";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
-      <h2 style={{ textAlign: "center", alignItems: "center" }}>
-        Akciók vagy valami felírat
-      </h2>
+    <Layout>
       <Component {...pageProps} />
-    </div>
+    </Layout>
   );
 }
 

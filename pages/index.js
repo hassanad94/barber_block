@@ -1,5 +1,4 @@
 import Hero from "../components/Hero";
-import Header from "../components/Header";
 // import About from "../components/About";
 // import GallerySection from "../components/GallerySection";
 // import Skills from "../components/Skills";
@@ -16,16 +15,12 @@ export async function getStaticProps() {
   }`;
   var logo = await client.fetch(logoQuery);
 
-  const socialsQuery = `*[_type == "socials"]`;
-  var socials = await client.fetch(socialsQuery);
-
   const heroQuery = `*[_type == "hero"]`;
   var heroTitles = await client.fetch(heroQuery);
 
   return {
     props: {
       logo,
-      socials,
       heroTitles,
     },
     // Next.js will attempt to re-generate the page:
@@ -35,13 +30,9 @@ export async function getStaticProps() {
 }
 
 export default function Home(...props) {
-  const { logo: LogoDoc, socials, heroTitles } = props[0];
-  const { logoImage } = LogoDoc[0];
-
-  const logoURL = urlForImage(logoImage).url();
+  const { heroTitles } = props[0];
   return (
     <div className="max-w-[1920px] mx-auto overflow-hidden bg-white">
-      <Header logo={logoURL} socials={socials} />
       <Hero titles={heroTitles} />
       {/* <About />
       <GallerySection />

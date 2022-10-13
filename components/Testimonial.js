@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import { motion } from "framer-motion";
 // import variants
 import { fadeIn } from "../variants";
+import Image from "next/image";
 
 export const Testimonial = () => {
   return (
@@ -28,7 +29,7 @@ export const Testimonial = () => {
               <SwiperSlide key={index}>
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center lg:flex-row lg:items-start gap-x-[38px]">
                   <div className="w-[154px] h-[109px] mb-5">
-                    <img src={quoteImg} alt="" />
+                    <Image layout="fill" src={quoteImg} alt="" />
                   </div>
                   <div className="flex-1 lg:mt-[54px]">
                     <div className="text-2xl lg:text-[36px] leading-normal mb-6 lg:mb-12">

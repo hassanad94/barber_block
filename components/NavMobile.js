@@ -2,6 +2,7 @@
 import { navData } from "../data";
 // import components
 import Socials from "./Socials";
+import Link from "next/link";
 
 const NavMobile = () => {
   // destructure nav data
@@ -12,9 +13,12 @@ const NavMobile = () => {
         {items.map((item, index) => {
           return (
             <li key={index}>
-              <a className="text-2xl font-primary uppercase" href={item.href}>
+              <Link
+                className="text-2xl font-primary uppercase"
+                href={item.href}
+              >
                 {item.name}
-              </a>
+              </Link>
             </li>
           );
         })}
