@@ -10,13 +10,10 @@ function MyApp({ Component, pageProps, router }) {
     useEffect(() => {
       // const handleStart = (url) => url !== router.asPath && setLoading(true);
       const handleStart = (url) => {
-        console.log("start");
+        setLoading(true);
       };
       const handleComplete = (url) =>
-        url === router.asPath &&
-        setTimeout(() => {
-          setLoading(false);
-        }, 5000);
+        url === router.asPath && setLoading(false);
 
       router.events.on("routeChangeStart", handleStart);
       router.events.on("routeChangeComplete", handleComplete);
@@ -27,12 +24,16 @@ function MyApp({ Component, pageProps, router }) {
         router.events.off("routeChangeComplete", handleComplete);
         router.events.off("routeChangeError", handleComplete);
       };
-    });
+    }, [router.events]);
 
     return (
       loading && (
-        <div className="spinner-wrapper">
-          <div className="spinner">TADSFASd</div>
+        <div className="loading-wrapper">
+          <div className="container">
+            <div className="box1"></div>
+            <div className="box2"></div>
+            <div className="box3"></div>
+          </div>
         </div>
       )
     );
