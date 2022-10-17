@@ -49,7 +49,7 @@ const Hero = (...props) => {
           </motion.p>
           {/* btn */}
           <motion.div variants={fadeIn("down")}>
-            <button className="z-10 btn btn-sm lg:btn-lg btn-outline mx-auto lg:mx-0">
+            <button className="z-2 btn btn-sm lg:btn-lg btn-outline mx-auto lg:mx-0">
               {btnText}
               <div className="text-xl">
                 <IoMdArrowForward />

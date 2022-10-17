@@ -40,18 +40,6 @@ export default function Home(...props) {
 
   const logoURL = urlForImage(logoImage).url();
   return (
-    <div className="max-w-[1920px] mx-auto overflow-hidden bg-white">
-      <Header logo={logoURL} socials={socials} />
-      <Hero titles={heroTitles} />
-      {/* <About />
-      <GallerySection />
-      <Skills />
-      <Testimonial />
-      <Interview />
-      <Contact />
-      <Footer />
-      <Copyright />
-      <div className='h-[4000px]'></div> */}
-    </div>
+    <div className="max-w-[1920px] mx-auto overflow-hidden bg-white">s</div>
   );
 }

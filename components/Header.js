@@ -5,16 +5,25 @@ import NavMobile from "./NavMobile";
 import Socials from "./Socials";
 import { logo } from "../data";
 import Link from "next/link";
+import { useStateContext } from "../context/settingContext";
+import { useRouter } from "next/router";
 
 const Header = () => {
-  const [navMobile, setNavMobile] = useState(false);
+  const { navMobile, setNavMobile } = useStateContext();
+
+  const router = useRouter();
+  useEffect(() => {
+    setNavMobile(false);
+  }, [router.asPath]);
 
   return (
     <header className="h-[120px] lg:h-[150px] bg-white fixed left-0 right-0 z-10 max-w-[1920px] w-full mx-auto transition-all duration-300">
       <div className="flex justify-between items-center h-full pl-[50px] pr-[60px]">
         {/* logo */}
         <Link href="/">
-          <Image width={75} height={75} src={logo} alt="Logo" />
+          <a>
+            <Image width={75} height={75} src={logo} alt="Logo" />
+          </a>
         </Link>
         {/* nav - initially is hidden - show on desktop*/}
         <div className="hidden xl:flex">

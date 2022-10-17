@@ -15,9 +15,7 @@ const Layout = ({ children }) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <header>
-        <Header />
-      </header>
+      <Header />
 
       <main className="main-container">{children}</main>
 

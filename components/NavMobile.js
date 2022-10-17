@@ -1,11 +1,8 @@
-// import nav data
 import { navData } from "../data";
-// import components
 import Socials from "./Socials";
 import Link from "next/link";
 
 const NavMobile = () => {
-  // destructure nav data
   const { items } = navData;
   return (
     <nav className="w-full h-full flex flex-col justify-evenly overflow-hidden">
