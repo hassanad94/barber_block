@@ -1,11 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "barber_block"
-  },
   "api": {
     "projectId": "4b8kgkhe",
     "dataset": "production"
+  },
+  "project": {
+    "name": "barber_block"
   },
   "plugins": [
     "@sanity/base",

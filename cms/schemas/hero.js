@@ -1,8 +1,13 @@
 export default {
   name: "hero",
-  title: "Fő feliratok",
+  title: "Fő oldal",
   type: "document",
   fields: [
+    {
+      name: "hero",
+      title: "Fő Kép",
+      type: "image",
+    },
     {
       name: "title",
       title: "Fő felírat",
@@ -10,12 +15,12 @@ export default {
     },
     {
       name: "subtitle",
-      title: "Rövid Leírás",
+      title: "Hero Rövid Leírás",
       type: "text",
     },
     {
       name: "btnText",
-      title: "Gomb Leírása",
+      title: "Hero Gomb Leírása",
       type: "string",
     },
   ],

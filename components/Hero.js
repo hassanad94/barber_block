@@ -18,12 +18,12 @@ const container = {
 const Hero = (...props) => {
   // destructure hero data
 
-  const { title, subtitle, btnText } = props[0].titles[0];
+  const { title, subtitle, btnText, hero } = props[0].hero[0];
 
   return (
     <section className="before:bg-[#00000085] before:h-[100%] before:w-[100%] before:absolute bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[95px] lg:mt-[150px]">
       <Image
-        src="/img/hero/bg.jpg"
+        src={hero}
         layout="fill"
         alt="hero"
         objectFit="cover"

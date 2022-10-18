@@ -16,26 +16,28 @@ export async function getStaticProps() {
   var logo = await client.fetch(logoQuery);
 
   const heroQuery = `*[_type == "hero"]`;
-  var heroTitles = await client.fetch(heroQuery);
+  var heroData = await client.fetch(heroQuery);
+
+  heroData[0].hero = urlForImage(heroData[0].hero).url();
 
   return {
     props: {
       logo,
-      heroTitles,
+      heroData,
     },
-    // Next.js will attempt to re-generate the page:
-    // - At most once every 60 seconds
-    revalidate: 1, // In seconds
+
+    revalidate: 1,
   };
 }
 
 export default function Home(...props) {
-  const { heroTitles } = props[0];
+  var { heroData } = props[0];
+
   return (
     <div className="max-w-[1920px] mx-auto overflow-hidden bg-white">
-      <Hero titles={heroTitles} />
-      {/* <About />
-      <GallerySection />
+      <Hero hero={heroData} />
+      <About />
+      {/*<GallerySection />
       <Skills />
       <Testimonial />
       <Interview />
