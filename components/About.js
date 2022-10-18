@@ -4,10 +4,12 @@ import { aboutData } from "../data";
 import { motion } from "framer-motion";
 // import variants
 import { fadeIn } from "../variants";
+import { IoMdArrowForward } from "react-icons/io";
 
-const About = () => {
+const About = (...props) => {
   // destructure about data
-  const { title, subtitle1, subtitle2, btnText, btnIcon } = aboutData;
+  const { title, subtitle, subtitle2, btnText, hero } = props[0].about[0];
+
   return (
     <section className="lg:py-16 xl:pb-[160px]">
       <div className="container mx-auto">
@@ -35,11 +37,13 @@ const About = () => {
             <h2 className="h2">{title}</h2>
             <div className="flex flex-col items-end">
               <div className="max-w-[530px] text-grey">
-                <p className="mb-6">{subtitle1}</p>
+                <p className="mb-6">{subtitle}</p>
                 <p className="mb-9">{subtitle2}</p>
                 <button className="btn btn-lg btn-link">
                   {btnText}
-                  <div className="text-xl">{btnIcon}</div>
+                  <div className="text-xl">
+                    <IoMdArrowForward />
+                  </div>
                 </button>
               </div>
             </div>

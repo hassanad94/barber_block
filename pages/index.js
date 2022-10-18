@@ -1,5 +1,5 @@
 import Hero from "../components/Hero";
-// import About from "../components/About";
+import About from "../components/About";
 // import GallerySection from "../components/GallerySection";
 // import Skills from "../components/Skills";
 // import Interview from "../components/Interview";
@@ -20,10 +20,15 @@ export async function getStaticProps() {
 
   heroData[0].hero = urlForImage(heroData[0].hero).url();
 
+  const aboutQuery = `*[_type == "about"]`;
+  var aboutData = await client.fetch(aboutQuery);
+  aboutData[0].hero = urlForImage(aboutData[0].aboutIMG).url();
+
   return {
     props: {
       logo,
       heroData,
+      aboutData,
     },
 
     revalidate: 1,
@@ -31,12 +36,12 @@ export async function getStaticProps() {
 }
 
 export default function Home(...props) {
-  var { heroData } = props[0];
+  var { heroData, aboutData } = props[0];
 
   return (
     <div className="max-w-[1920px] mx-auto overflow-hidden bg-white">
       <Hero hero={heroData} />
-      <About />
+      <About about={aboutData} />
       {/*<GallerySection />
       <Skills />
       <Testimonial />
