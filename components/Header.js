@@ -26,7 +26,7 @@ const Header = () => {
         {/* nav menu btn - is showing by default - hidden on desktop mode */}
         <div
           onClick={() => setNavMobile(!navMobile)}
-          className="xl:hidden absolute right-[5%] bg-dark p-[10px] rounded-md cursor-pointer"
+          className="xl:hidden absolute right-[5%] bg-dark p-[18px_7px] rounded-md cursor-pointer"
         >
           <div
             className={`${

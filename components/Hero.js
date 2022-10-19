@@ -21,7 +21,7 @@ const Hero = (...props) => {
   const { title, subtitle, btnText, hero } = props[0].hero[0];
 
   return (
-    <section className="before:bg-[#00000085] before:h-[100%] before:w-[100%] before:absolute bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[95px] lg:mt-[150px]">
+    <section className="hero-container before:z-[2] before:bg-[#00000085] before:h-[100%] before:w-[100%] before:absolute bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[95px] lg:mt-[95px]">
       <Image
         src={hero}
         layout="fill"
@@ -34,7 +34,7 @@ const Hero = (...props) => {
         variants={container}
         initial="hidden"
         whileInView={"show"}
-        className="container p-[10px] mx-auto min-h-[40vh] lg:h-full flex items-center justify-center xl:justify-end"
+        className="container z-[3] p-[10px] mx-auto min-h-[40vh] lg:h-full flex items-center justify-center xl:justify-end"
       >
         {/* text & btn */}
         <div className="text-white text-center lg:text-left lg:max-w-[640px]">
@@ -48,17 +48,17 @@ const Hero = (...props) => {
             {subtitle}
           </motion.p>
           {/* btn */}
-          <motion.div variants={fadeIn("down")}>
-            <button className="z-2 btn btn-sm lg:btn-lg btn-outline mx-auto lg:mx-0">
+          {/* <motion.div variants={fadeIn("down")}>
+            <button className="z-[4] btn btn-sm lg:btn-lg btn-outline mx-auto lg:mx-0">
               {btnText}
               <div className="text-xl">
                 <IoMdArrowForward />
               </div>
             </button>
-          </motion.div>
+          </motion.div> */}
         </div>
         {/* outline text */}
-        <div className="hidden xl:flex absolute -bottom-2 right-0 left-0 before:content-outlineText"></div>
+        <div className="hidden xl:flex absolute -bottom-2 right-0 left-0 before:content-outlineText before:opacity-50"></div>
       </motion.div>
     </section>
   );
