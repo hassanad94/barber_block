@@ -1,6 +1,6 @@
 import Hero from "../components/Hero";
 import About from "../components/About";
-// import GallerySection from "../components/GallerySection";
+import GallerySection from "../components/GallerySection";
 // import Skills from "../components/Skills";
 // import Interview from "../components/Interview";
 // import Testimonial from "../components/Testimonial";
@@ -24,11 +24,19 @@ export async function getStaticProps() {
   var aboutData = await client.fetch(aboutQuery);
   aboutData[0].hero = urlForImage(aboutData[0].aboutIMG).url();
 
+  const galeryQuery = `*[_type == "mainGalery"]`;
+  var galeryData = await client.fetch(galeryQuery);
+
+  galeryData[0].galery = galeryData[0].galery.map((element) => {
+    return urlForImage(element).url();
+  });
+
   return {
     props: {
       logo,
       heroData,
       aboutData,
+      galeryData,
     },
 
     revalidate: 1,
@@ -36,14 +44,14 @@ export async function getStaticProps() {
 }
 
 export default function Home(...props) {
-  var { heroData, aboutData } = props[0];
+  var { heroData, aboutData, galeryData } = props[0];
 
   return (
     <div className="max-w-[1920px] mx-auto overflow-hidden bg-white">
       <Hero hero={heroData} />
       <About about={aboutData} />
-      {/*<GallerySection />
-      <Skills />
+      <GallerySection galleryData={galeryData} />
+      {/*<Skills />
       <Testimonial />
       <Interview />
       <Contact />

@@ -8,7 +8,7 @@ import { IoMdArrowForward } from "react-icons/io";
 
 const About = (...props) => {
   // destructure about data
-  const { title, subtitle, subtitle2, btnText, hero } = props[0].about[0];
+  const { title, subtitle, btnText } = props[0].about[0];
 
   return (
     <section className="lg:py-16 xl:pb-[160px]">
@@ -38,7 +38,6 @@ const About = (...props) => {
             <div className="flex flex-col items-end">
               <div className="max-w-[530px] text-grey">
                 <p className="mb-6">{subtitle}</p>
-                <p className="mb-9">{subtitle2}</p>
                 <button className="btn btn-lg btn-link">
                   {btnText}
                   <div className="text-xl">
