@@ -43,7 +43,7 @@ const Skills = () => {
     return () => {
       clearTimeout(circleTimeout);
     };
-  }, [inView, quality, style, quality]);
+  }, [inView, quality, style, vibe]);
 
   const styles = {
     path: {

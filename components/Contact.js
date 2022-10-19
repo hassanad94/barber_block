@@ -6,9 +6,6 @@ const Contact = (...props) => {
   // destructure contact data
 
   const { locationDetails, phone, email, location } = props[0].contactInfo[0];
-
-  console.log(props[0]);
-
   return (
     <section className="section">
       <div className="container mx-auto">
@@ -63,6 +60,7 @@ const Contact = (...props) => {
                   className="font-medium border-b border-dark pb-[5px]"
                   href="https://goo.gl/maps/GVhGrJL7Bs5suJHK8"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Megnézem google maps-n
                 </a>
