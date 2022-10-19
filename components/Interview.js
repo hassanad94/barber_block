@@ -1,25 +1,24 @@
-import { useState } from "react";
-// import data
-import { interviewData } from "../data";
-// import modal video
-import ModalVideo from "react-modal-video";
-import "../modalVideo.scss";
-// import motion
 import { motion } from "framer-motion";
-// import variants
 import { fadeIn } from "../variants";
+import ModalVideo from "./ModalVideo";
+import { useStateContext } from "../context/settingContext";
 
-const Interview = () => {
-  // destructure interview data
-  const { title, btnText, btnIcon } = interviewData;
-  const [isOpen, setOpen] = useState(false);
+const Interview = (...props) => {
+  const { getYoutubeEmbemedId } = useStateContext();
+  const { interviewData } = props[0];
+  const { title, video } = interviewData[0];
+
+  const videoID = getYoutubeEmbemedId(video);
+
+  console.log(videoID);
+
   return (
     <motion.section
       variants={fadeIn("up")}
       initial="hidden"
       whileInView={"show"}
       viewport={{ once: false, amount: 0.1 }}
-      className="section bg-dark bg-interview bg-no-repeat bg-cover bg-center lg:h-[812px]"
+      className="section bg-dark bg-interview bg-no-repeat bg-cover bg-center lg:h-[812px] max-h-[500px]"
     >
       <div className="container mx-auto h-full">
         <div className="flex flex-col justify-center h-full">
@@ -30,33 +29,8 @@ const Interview = () => {
             >
               {title}
             </motion.h3>
-            {/* btn */}
-            <motion.div variants={fadeIn("down")}>
-              <div
-                className="text-white flex items-center gap-x-5 cursor-pointer hover:opacity-80 transition"
-                onClick={() => setOpen(true)}
-              >
-                {/* border */}
-                <div className="w-[70px] h-[70px] lg:w-[91px] lg:h-[91px] border border-white/40 rounded-full text-dark p-[5px] lg:p-[8px]">
-                  {/* inner */}
-                  <div className="bg-white w-full h-full rounded-full flex justify-center items-center">
-                    <div className="pl-1">{btnIcon}</div>
-                  </div>
-                </div>
-                {/* btn text */}
-                <div className="font-primary uppercase tracking-[0.1em]">
-                  {btnText}
-                </div>
-              </div>
-            </motion.div>
             {/* modal video */}
-            <ModalVideo
-              channel="youtube"
-              autoplay
-              isOpen={isOpen}
-              videoId="_l1mqYQuNf8"
-              onClose={() => setOpen(false)}
-            />
+            <ModalVideo videoId={videoID} />
           </div>
         </div>
       </div>

@@ -15,34 +15,35 @@ const Skills = () => {
     threshold: 0.2,
   });
 
-  const [fullBody, setFullBody] = useState(0);
-  const [piercing, setPiercing] = useState(0);
-  const [fullColor, setFullColor] = useState(0);
-  const [temporary, setTemporary] = useState(0);
+  const [quality, setQuality] = useState(0);
+  const [style, setStyle] = useState(0);
+  const [vibe, setVibe] = useState(0);
 
   useEffect(() => {
-    if (inView) {
-      setTimeout(() => {
-        if (fullBody < 90) {
-          setFullBody(fullBody + 1);
-        }
-        if (piercing < 80) {
-          setPiercing(piercing + 1);
-        }
-        if (fullColor < 75) {
-          setFullColor(fullColor + 1);
-        }
-        if (temporary < 95) {
-          setTemporary(temporary + 1);
-        }
-      }, 50);
-    } else {
-      setFullBody(0);
-      setPiercing(0);
-      setFullColor(0);
-      setTemporary(0);
+    if (!inView) {
+      setQuality(0);
+      setStyle(0);
+      setVibe(0);
+
+      return;
     }
-  }, [inView, fullBody, piercing, fullBody, temporary]);
+
+    const circleTimeout = setTimeout(() => {
+      if (quality < 100) {
+        setQuality(quality + 1);
+      }
+      if (style < 100) {
+        setStyle(style + 1);
+      }
+      if (vibe < 100) {
+        setVibe(vibe + 1);
+      }
+    }, 50);
+
+    return () => {
+      clearTimeout(circleTimeout);
+    };
+  }, [inView, quality, style, quality]);
 
   const styles = {
     path: {
@@ -72,44 +73,33 @@ const Skills = () => {
             <CircularProgressbar
               strokeWidth={1}
               styles={styles}
-              value={fullBody}
-              text={`${fullBody}%`}
+              value={quality}
+              text={`${quality}%`}
             />
             <div className="uppercase font-light tracking-[1.2px] text-center">
-              Full Body Tatoo
+              Minőség
             </div>
           </div>
           <div className="w-[150px] lg:w-[275px] flex flex-col justify-center items-center gap-y-6">
             <CircularProgressbar
               styles={styles}
               strokeWidth={1}
-              value={piercing}
-              text={`${piercing}%`}
+              value={style}
+              text={`${style}%`}
             />
             <div className="uppercase font-light tracking-[1.2px] text-center">
-              Safely Piercing
+              Stílus
             </div>
           </div>
           <div className="w-[150px] lg:w-[275px] flex flex-col justify-center items-center gap-y-6">
             <CircularProgressbar
               styles={styles}
               strokeWidth={1}
-              value={fullColor}
-              text={`${fullColor}%`}
+              value={vibe}
+              text={`${vibe}%`}
             />
             <div className="uppercase font-light tracking-[1.2px] text-center">
-              Full Colour Tatoo
-            </div>
-          </div>
-          <div className="w-[150px] lg:w-[275px] flex flex-col justify-center items-center gap-y-6">
-            <CircularProgressbar
-              styles={styles}
-              strokeWidth={1}
-              value={temporary}
-              text={`${temporary}%`}
-            />
-            <div className="uppercase font-light tracking-[1.2px] text-center">
-              Temporary Tatoo
+              Hangulat
             </div>
           </div>
         </div>

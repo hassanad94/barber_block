@@ -18,7 +18,7 @@ const container = {
 const Hero = (...props) => {
   // destructure hero data
 
-  const { title, subtitle, btnText, hero } = props[0].hero[0];
+  const { title, subtitle, hero } = props[0].hero[0];
 
   return (
     <section className="hero-container before:z-[2] before:bg-[#00000085] before:h-[100%] before:w-[100%] before:absolute bg-cover bg-center min-h-[40vh] lg:h-[948px] bg-no-repeat relative mt-[95px] lg:mt-[95px]">
@@ -27,8 +27,7 @@ const Hero = (...props) => {
         layout="fill"
         alt="hero"
         objectFit="cover"
-        quality={100}
-        priority
+        priority={true}
       />
       <motion.div
         variants={container}
