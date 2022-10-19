@@ -10,8 +10,6 @@ const Interview = (...props) => {
 
   const videoID = getYoutubeEmbemedId(video);
 
-  console.log(videoID);
-
   return (
     <motion.section
       variants={fadeIn("up")}

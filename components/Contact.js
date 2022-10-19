@@ -1,13 +1,14 @@
-// import contact data
-import { contactData } from "../data";
-// import motion
 import { motion } from "framer-motion";
-// import variants
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { fadeIn } from "../variants";
 
-const Contact = () => {
+const Contact = (...props) => {
   // destructure contact data
-  const { title, info, form } = contactData;
+
+  const { locationDetails, phone, email, location } = props[0].contactInfo[0];
+
+  console.log(props[0]);
+
   return (
     <section className="section">
       <div className="container mx-auto">
@@ -21,51 +22,51 @@ const Contact = () => {
             className="flex-1"
           >
             {/* title */}
-            <h2 className="h2 max-w-[490px]">{title}</h2>
+            <h2 className="h2 max-w-[490px]">Megtalálsz:</h2>
             {/* info items */}
             <div className="flex flex-col xl:flex-row gap-x-5 gap-y-16 xl:gap-y-0">
-              {info.map((item, index) => {
-                // destructure item
-                const { title, subtitle, address, phone, email, link } = item;
-                return (
-                  // item
-                  <div key={index}>
-                    {/* title */}
-                    <div className="font-primary uppercase font-medium text-xl mb-3">
-                      {title}
+              <div>
+                {/* title */}
+                <div className="font-primary uppercase font-medium text-xl mb-3">
+                  Budapest 15. kerület
+                </div>
+                {/* subtitle */}
+                <div className="mb-6 text-[#333] leading-[187%] tracking-[0.02em]">
+                  {locationDetails}
+                </div>
+                {/* address, phone & email */}
+                <div className="flex flex-col gap-y-3 mb-8">
+                  {/* address */}
+                  <div className="flex items-center gap-[10px]">
+                    <div>
+                      <FaMapMarkerAlt />
                     </div>
-                    {/* subtitle */}
-                    <div className="mb-6 text-[#333] leading-[187%] tracking-[0.02em]">
-                      {subtitle}
-                    </div>
-                    {/* address, phone & email */}
-                    <div className="flex flex-col gap-y-3 mb-8">
-                      {/* address */}
-                      <div className="flex items-center gap-[10px]">
-                        <div>{address.icon}</div>
-                        <div className="font-medium">{address.name}</div>
-                      </div>
-                      {/* phone */}
-                      <div className="flex items-center gap-[10px]">
-                        <div>{phone.icon}</div>
-                        <div className="font-medium">{phone.number}</div>
-                      </div>
-                      {/* email */}
-                      <div className="flex items-center gap-[10px]">
-                        <div>{email.icon}</div>
-                        <div className="font-medium">{email.address}</div>
-                      </div>
-                    </div>
-                    {/* link */}
-                    <a
-                      className="font-medium border-b border-dark pb-[5px]"
-                      href="#"
-                    >
-                      {link}
-                    </a>
+                    <div className="font-medium">{location}</div>
                   </div>
-                );
-              })}
+                  {/* phone */}
+                  <div className="flex items-center gap-[10px]">
+                    <div>
+                      <FaPhoneAlt />
+                    </div>
+                    <div className="font-medium">{phone}</div>
+                  </div>
+                  {/* email */}
+                  <div className="flex items-center gap-[10px]">
+                    <div>
+                      <FaEnvelope />
+                    </div>
+                    <div className="font-medium">{email}</div>
+                  </div>
+                </div>
+                {/* link */}
+                <a
+                  className="font-medium border-b border-dark pb-[5px]"
+                  href="https://goo.gl/maps/GVhGrJL7Bs5suJHK8"
+                  target="_blank"
+                >
+                  Megnézem google maps-n
+                </a>
+              </div>
             </div>
           </motion.div>
           {/* form */}
@@ -80,21 +81,19 @@ const Contact = () => {
               <input
                 className="border-b border-dark placeholder:text-[#555] italic tracking-[0.06em] outline-none pb-4"
                 type="text"
-                placeholder={form.name}
+                placeholder="Név:"
               />
               <input
                 className="border-b border-dark placeholder:text-[#555] italic tracking-[0.06em] outline-none pb-4"
                 type="text"
-                placeholder={form.email}
+                placeholder="Email:"
               />
               <input
                 className="border-b border-dark placeholder:text-[#555] italic tracking-[0.06em] outline-none pb-4 xl:mb-[30px]"
                 type="text"
-                placeholder={form.message}
+                placeholder="Telefonszám:"
               />
-              <button className="self-start btn btn-sm btn-dark">
-                {form.btnText}
-              </button>
+              <button className="self-start btn btn-sm btn-dark">Küldés</button>
             </form>
           </motion.div>
         </div>

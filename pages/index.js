@@ -4,7 +4,7 @@ import GallerySection from "../components/GallerySection";
 import Skills from "../components/Skills";
 import Testimonial from "../components/Testimonial";
 import Interview from "../components/Interview";
-// import Contact from "../components/Contact";
+import Contact from "../components/Contact";
 // import Footer from "../components/Footer";
 // import Copyright from "../components/Copyright";
 import { client, urlForImage } from "../lib/client";
@@ -37,6 +37,9 @@ export async function getStaticProps() {
   const interviewQuery = `*[_type == "interview"]`;
   var interviewData = await client.fetch(interviewQuery);
 
+  const companyInfoQuery = `*[_type == "companyInfo"]`;
+  var companyInfoData = await client.fetch(companyInfoQuery);
+
   return {
     props: {
       logo,
@@ -45,6 +48,7 @@ export async function getStaticProps() {
       galeryData,
       testimonialsData,
       interviewData,
+      companyInfoData,
     },
 
     revalidate: 1,
@@ -52,8 +56,14 @@ export async function getStaticProps() {
 }
 
 export default function Home(...props) {
-  var { heroData, aboutData, galeryData, testimonialsData, interviewData } =
-    props[0];
+  var {
+    heroData,
+    aboutData,
+    galeryData,
+    testimonialsData,
+    interviewData,
+    companyInfoData,
+  } = props[0];
 
   return (
     <div className="max-w-[1920px] mx-auto overflow-hidden bg-white">
@@ -63,8 +73,8 @@ export default function Home(...props) {
       <Skills />
       <Testimonial testimonialData={testimonialsData} />
       <Interview interviewData={interviewData} />
-      {/*<Contact />
-      <Footer />
+      <Contact contactInfo={companyInfoData} />
+      {/*<Footer />
       <Copyright />
       <div className='h-[4000px]'></div> */}
     </div>

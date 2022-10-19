@@ -7,6 +7,7 @@ import about from "./about";
 import mainGalery from "./mainGalery";
 import testimonials from "./testimonials";
 import interview from "./interview";
+import companyInfo from "./companyInfo";
 
 export default createSchema({
   name: "default",
@@ -17,5 +18,6 @@ export default createSchema({
     mainGalery,
     testimonials,
     interview,
+    companyInfo,
   ]),
 });
