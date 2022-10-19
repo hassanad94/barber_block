@@ -38,21 +38,32 @@ const Contact = (...props) => {
                     <div>
                       <FaMapMarkerAlt />
                     </div>
-                    <div className="font-medium">{location}</div>
+                    <a
+                      href="https://goo.gl/maps/GVhGrJL7Bs5suJHK8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium"
+                    >
+                      {location}
+                    </a>
                   </div>
                   {/* phone */}
                   <div className="flex items-center gap-[10px]">
                     <div>
                       <FaPhoneAlt />
                     </div>
-                    <div className="font-medium">{phone}</div>
+                    <a href={`tel:${phone}`} className="font-medium">
+                      {phone}
+                    </a>
                   </div>
                   {/* email */}
                   <div className="flex items-center gap-[10px]">
                     <div>
                       <FaEnvelope />
                     </div>
-                    <div className="font-medium">{email}</div>
+                    <a href={`mailto:${email}`} className="font-medium">
+                      {email}
+                    </a>
                   </div>
                 </div>
                 {/* link */}
