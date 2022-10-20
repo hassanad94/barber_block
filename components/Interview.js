@@ -15,7 +15,7 @@ const Interview = (...props) => {
       variants={fadeIn("up")}
       initial="hidden"
       whileInView={"show"}
-      viewport={{ once: false, amount: 0.1 }}
+      viewport={{ once: true, amount: 0.1 }}
       className="section bg-dark bg-interview bg-no-repeat bg-cover bg-center lg:h-[812px] max-h-[500px]"
     >
       <div className="container mx-auto h-full">

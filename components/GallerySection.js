@@ -7,11 +7,12 @@ import "yet-another-react-lightbox/styles.css";
 // import motion
 import { motion } from "framer-motion";
 // import variants
-import { fadeIn } from "../variants";
+import { fadeIn, delayChild } from "../variants";
 import { IoMdArrowForward } from "react-icons/io";
+import NextJsImage from "./NextJsImageContainer";
 
 const GallerySection = (...props) => {
-  const { galleryData } = props[0];
+  const { galleryData, buttonDisable } = props[0];
 
   const images = galleryData[0].galery.map((image) => ({
     src: image,
@@ -29,7 +30,7 @@ const GallerySection = (...props) => {
           variants={fadeIn("up")}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.6 }}
+          viewport={{ once: true, amount: 0.6 }}
           className="h2 max-w-[370px] lg:mb-20"
         >
           Nézd meg a Munkáim
@@ -40,14 +41,16 @@ const GallerySection = (...props) => {
         variants={fadeIn("up")}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
         className="mb-8 lg:mb-20"
       >
         <PhotoAlbum
-          layout="masonry"
+          layout="columns"
           photos={images}
+          renderPhoto={NextJsImage}
           onClick={(event, photo, index) => setIndex(index)}
         />
+
         <Lightbox
           slides={images}
           styles={{ container: { backgroundColor: "rgba(0,0,0,.9)" } }}
@@ -57,20 +60,23 @@ const GallerySection = (...props) => {
         />
       </motion.div>
       {/* btn */}
-      <motion.div
-        variants={fadeIn("up")}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: false, amount: 0.2 }}
-        className="flex justify-center"
-      >
-        <button className="btn btn-lg btn-dark">
-          Galéria Megnyitása
-          <div className="text-xl">
-            <IoMdArrowForward />
-          </div>
-        </button>
-      </motion.div>
+
+      {!buttonDisable && (
+        <motion.div
+          variants={fadeIn("up")}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex justify-center"
+        >
+          <button className="btn btn-lg btn-dark">
+            Galéria Megnyitása
+            <div className="text-xl">
+              <IoMdArrowForward />
+            </div>
+          </button>
+        </motion.div>
+      )}
     </section>
   );
 };

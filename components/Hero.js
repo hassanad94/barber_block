@@ -33,6 +33,7 @@ const Hero = (...props) => {
         variants={container}
         initial="hidden"
         whileInView={"show"}
+        viewport={{ once: true }}
         className="container z-[3] p-[10px] mx-auto min-h-[40vh] lg:h-full flex items-center justify-center xl:justify-end"
       >
         {/* text & btn */}

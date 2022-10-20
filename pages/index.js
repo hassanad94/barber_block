@@ -5,7 +5,7 @@ import Skills from "../components/Skills";
 import Testimonial from "../components/Testimonial";
 import Interview from "../components/Interview";
 import Contact from "../components/Contact";
-// import Footer from "../components/Footer";
+import Footer from "../components/Footer";
 // import Copyright from "../components/Copyright";
 import { client, urlForImage } from "../lib/client";
 
@@ -74,8 +74,8 @@ export default function Home(...props) {
       <Testimonial testimonialData={testimonialsData} />
       <Interview interviewData={interviewData} />
       <Contact contactInfo={companyInfoData} />
-      {/*<Footer />
-      <Copyright />
+      <Footer contactInfo={companyInfoData} />
+      {/* <Copyright />
       <div className='h-[4000px]'></div> */}
     </div>
   );

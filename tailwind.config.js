@@ -30,7 +30,6 @@ module.exports = {
         },
       },
       backgroundImage: {
-        hero: "url('/img/hero/bg.jpg')",
         about: "url('/img/about/image.png')",
         interview: "url('/img/interview/interju-bg.jpg')",
       },

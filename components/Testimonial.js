@@ -15,7 +15,7 @@ export const Testimonial = (...props) => {
       variants={fadeIn("up")}
       initial="hidden"
       whileInView={"show"}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="pb-[40px] pt-[40px] lg:pb-[160px] lg:pt-0"
     >
       <div className="container mx-auto">

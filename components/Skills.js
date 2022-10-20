@@ -20,14 +20,6 @@ const Skills = () => {
   const [vibe, setVibe] = useState(0);
 
   useEffect(() => {
-    if (!inView) {
-      setQuality(0);
-      setStyle(0);
-      setVibe(0);
-
-      return;
-    }
-
     const circleTimeout = setTimeout(() => {
       if (quality < 100) {
         setQuality(quality + 1);
@@ -63,7 +55,7 @@ const Skills = () => {
       variants={fadeIn("up")}
       initial="hidden"
       whileInView={"show"}
-      viewport={{ once: false, amount: 0.1 }}
+      viewport={{ once: true, amount: 0.1 }}
       ref={ref}
       className="section font-primary"
     >

@@ -1,9 +1,7 @@
-// import footer data
-import { footerData } from "../data";
-// import motion
 import { motion } from "framer-motion";
-// import variants
 import { fadeIn } from "../variants";
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { FiSend } from "react-icons/fi";
 
 const staggerContainer = {
   hidden: {},
@@ -15,9 +13,8 @@ const staggerContainer = {
   },
 };
 
-const Footer = () => {
-  // destructure footer data
-  const { about, links, program, newsletter } = footerData;
+const Footer = (...props) => {
+  const { locationDetails, phone, email, location } = props[0].contactInfo[0];
   return (
     <footer className="bg-dark section">
       <div className="container mx-auto">
@@ -26,7 +23,7 @@ const Footer = () => {
           variants={staggerContainer}
           initial={"hidden"}
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="flex flex-col lg:flex-row lg:justify-between text-white gap-x-5 gap-y-14"
         >
           {/* about */}
@@ -36,28 +33,45 @@ const Footer = () => {
           >
             {/* title */}
             <div className="font-primary text-xl uppercase tracking-[0.08em]">
-              {about.title}
+              Elérhetőségek
             </div>
             {/* subtitle */}
             <div className="leading-relaxed text-[#DBDBDB]">
-              {about.subtitle}
+              {locationDetails}
             </div>
             {/* address & phone & email */}
             <div className="flex flex-col gap-y-4 font-semibold text-[#DBDBDB]">
               {/* address */}
               <div className="flex items-center gap-x-[10px]">
-                <div>{about.address.icon}</div>
-                <div>{about.address.name}</div>
+                <div>
+                  <FaMapMarkerAlt />
+                </div>
+                <a
+                  href="https://goo.gl/maps/GVhGrJL7Bs5suJHK8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium"
+                >
+                  {location}
+                </a>
               </div>
               {/* phone */}
               <div className="flex items-center gap-x-[10px]">
-                <div>{about.phone.icon}</div>
-                <div>{about.phone.number}</div>
+                <div>
+                  <FaPhoneAlt />
+                </div>
+                <a href={`tel:${phone}`} className="font-medium">
+                  {phone}
+                </a>
               </div>
               {/* email */}
               <div className="flex items-center gap-x-[10px]">
-                <div>{about.email.icon}</div>
-                <div>{about.email.address}</div>
+                <div>
+                  <FaEnvelope />
+                </div>
+                <a href={`mailto:${email}`} className="font-medium">
+                  {email}
+                </a>
               </div>
             </div>
           </motion.div>
@@ -68,50 +82,61 @@ const Footer = () => {
           >
             <div>
               <div className="font-primary text-xl uppercase tracking-[0.08em] mb-6">
-                {links.title}
+                Hasznos linkek
               </div>
               <ul className="flex flex-col gap-y-4 text-[#DBDBDB]">
-                {links.items.map((item, index) => {
-                  // destructure item
-                  const { href, name } = item;
-                  return (
-                    <li key={index}>
-                      <a className="hover:text-white transition" href={href}>
-                        {name}
-                      </a>
-                    </li>
-                  );
-                })}
+                <li>
+                  <a className="hover:text-white transition" href={"/arak"}>
+                    Árak
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-white transition" href={"/rolam"}>
+                    Rólam
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-white transition" href={"/galeria"}>
+                    Galéria
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="hover:text-white transition"
+                    href={"/kapcsolat"}
+                  >
+                    Kapcsolat
+                  </a>
+                </li>
               </ul>
             </div>
           </motion.div>
           {/* program */}
           <motion.div variants={fadeIn("up")} className="flex-1">
             <div className="font-primary text-xl uppercase tracking-[0.08em] mb-6">
-              {program.title}
+              Nyítvatartás
             </div>
             <ul className="flex flex-col gap-y-4 text-[#DBDBDB]">
-              {program.items.map((item, index) => {
-                return <li key={index}>{item.name}</li>;
-              })}
+              <li>Hétfő - Péntek / 9:00-17:00</li>
+              <li>Szo - Vas / 12:00-17:00</li>
             </ul>
           </motion.div>
           {/* newsletter */}
           <motion.div variants={fadeIn("up")} className="flex-1">
             <div className="font-primary text-xl uppercase tracking-[0.08em] mb-6">
-              {newsletter.title}
+              Hírlevél
             </div>
             <div className="leading-relaxed mb-9 text-[#DBDBDB]">
-              {newsletter.subtitle}
+              Újdonságokért és promóciókért íratkozz fel
             </div>
             <form className="flex  justify-between items-start border-b border-[#B6B6B6]">
               <input
                 className="outline-none placeholder:text-base italic placeholder:capitalize  bg-transparent pb-2"
                 type="text"
-                placeholder={newsletter.form.placeholder}
+                placeholder="Iratkozz fel a hírlvelemre"
               />
               <button type="submit" className="text-2xl cursor-pointer">
-                {newsletter.form.icon}
+                <FiSend />
               </button>
             </form>
           </motion.div>

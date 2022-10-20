@@ -901,3 +901,7 @@ a {
     height: auto;
   }
 }
+
+[class*="react-photo-album--"] {
+  cursor: pointer;
+}

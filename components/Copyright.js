@@ -13,7 +13,7 @@ const Copyright = () => {
             duration: 0.8,
             delay: 0.2,
           }}
-          viewport={{ once: false, amount: 0 }}
+          viewport={{ once: true, amount: 0 }}
           className="tracking-[0.02em] text-base"
         >
           &copy; 2022

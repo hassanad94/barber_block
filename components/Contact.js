@@ -15,7 +15,7 @@ const Contact = (...props) => {
             variants={fadeIn("right")}
             initial="hidden"
             whileInView={"show"}
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.4 }}
             className="flex-1"
           >
             {/* title */}
@@ -83,7 +83,7 @@ const Contact = (...props) => {
             variants={fadeIn("left")}
             initial="hidden"
             whileInView={"show"}
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.4 }}
             className="flex-1 xl:pl-[40px] flex justify-center items-center "
           >
             <form className="flex flex-col gap-y-10 w-full">
